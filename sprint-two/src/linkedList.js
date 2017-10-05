@@ -1,5 +1,6 @@
 var LinkedList = function() {
   var list = {};
+  // list.size = 0;
   list.head = null;
   list.tail = null;
 
@@ -8,6 +9,7 @@ var LinkedList = function() {
     if ( this.tail === null ) {
       this.head = node;
       this.tail = this.head;
+      // this.size++;
     } else {
       var current = this.head;
       while ( current.next !== null ) {
@@ -23,6 +25,7 @@ var LinkedList = function() {
       var current = this.head;
       var tempValue = this.head.value;
       this.head = current.next;
+      // this.size--;
       return tempValue;
     }
   };
