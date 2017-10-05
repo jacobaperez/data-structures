@@ -1,7 +1,8 @@
 describe('linkedList', function() {
   var linkedList;
-
+  var ll;
   beforeEach(function() {
+    ll = new LinkedList();
     linkedList = LinkedList();
   });
 
@@ -22,6 +23,16 @@ describe('linkedList', function() {
     linkedList.addToTail(5);
     expect(linkedList.tail.value).to.equal(5);
   });
+
+  it('should verify that the tail is pointing to to correct node and not just a separate similar node', function() {
+    ll.addToTail(1);
+    expect(ll.head).to.eql(ll.tail);
+    expect(ll.head.value).to.equal(ll.tail.value);
+    ll.addToTail(2);
+    ll.addToTail(3);
+    expect(ll.head.next.next).to.eql(ll.tail);
+    expect(ll.head.next.next.value).to.equal(ll.tail.value);
+  })
 
   it('should remove the head from the list when removeHead is called', function() {
     linkedList.addToTail(4);
