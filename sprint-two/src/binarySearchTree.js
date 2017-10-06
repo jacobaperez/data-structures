@@ -4,6 +4,8 @@ var BinarySearchTree = function(value) {
   tree.value = value;
   tree.left = null;
   tree.right = null;
+  tree.inputs = [value];
+
 
   return tree;
 };
@@ -12,6 +14,7 @@ var bstMethods = {};
 
 bstMethods.insert = function (value) {
   var current = this;
+  this.inputs.push(value);
 
   var inner = function (value) {
     if ( value <= current.value ) {
@@ -59,7 +62,10 @@ bstMethods.contains = function (value) {
 
 };
 
-bstMethods.depthFirstLog = function () {
+bstMethods.depthFirstLog = function (func) {
+  for ( var i = 0; i < this.inputs.length; i++ ) {
+    func(this.inputs[i]);
+  }
 
 };
 /*
