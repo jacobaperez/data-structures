@@ -32,11 +32,30 @@ bstMethods.insert = function (value) {
 };
 
 bstMethods.contains = function (value) {
-  // var current = this;
-  // if ( current.head === value ) {
-  //   return true;
-  // }
-  
+
+  var current = this;
+
+  var contained =  function (value) {
+    if ( current.value === value ) {
+      return true;
+    }
+    if ( value < current.value ) {
+      if ( current.left === null ) {
+        return false;
+      }
+      current = current.left;
+    }
+    if ( current.right === null ) {
+      return false;
+    }
+
+    current = current.right;
+    return contained(value);
+
+  }
+
+  return contained(value);
+
 
 };
 
