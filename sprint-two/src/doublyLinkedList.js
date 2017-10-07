@@ -24,16 +24,68 @@ DoublyLinkedList.prototype.addToHead = function (value) {
 };
 
 DoublyLinkedList.prototype.addToTail = function (value) {
+  this.size++;
 
+  if ( this.size === 1 ) {
+    this.head = this.tail = new Nodes(value);
+  } else {
+      var currentTail = this.tail;
+      this.tail = new Nodes(value, null, currentTail);
+      currentTail.next = this.tail;
+  }
 };
 
 DoublyLinkedList.prototype.removeTail = function () {
   this.size--;
 
+  if ( this.tail !== null ) {
+    var currentTail = this.tail;
+    let temp = currentTail.value;
+    delete this.tail;
+    this.tail = currentTail.previous;
+    this.tail.next = null;
+    return temp;
+
+  }
 };
 
-// var dll = new DoublyLinkedList();
-//
-// dll.addToHead(3);
-// dll.addToHead(2);
-// dll.addToHead(1);
+DoublyLinkedList.prototype.removeHead = function () {
+  this.size--;
+
+  if ( this.head !== null ) {
+    var currentHead = this.head;
+    let temp = currentHead.value;
+    delete this.head;
+    this.head = currentHead.next;
+    return temp;
+  }
+};
+
+DoublyLinkedList.prototype.contains = function (value) {
+
+  if ( this.size >= 1 ) {
+    var current = this.head;
+
+    var inner = function(value) {
+      if ( current.value === value ) {
+        return true;
+      }
+      if ( current.next !== null ) {
+        current = current.next;
+        return inner(value);
+      }
+      return false;
+
+    }
+    return inner(value);
+  }
+
+  return false;
+
+};
+
+var dll = new DoublyLinkedList();
+
+dll.addToHead(3);
+dll.addToHead(2);
+dll.addToHead(1);
