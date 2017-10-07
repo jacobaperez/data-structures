@@ -25,12 +25,22 @@ describe('doublyLinkedList', function() {
   });
 
   it('should add node to head preserving position of tail while adding to list', function (){
+    dll.addToHead(3);
+    dll.addToHead(2);
+    dll.addToHead(1);
+    expect(dll.head.next.next).to.equal(dll.tail);
+
+  });
+
+  it('verify previous references are accurate', function() {
     dll.addToHead(5);
-    var tail = dll.tail;
     dll.addToHead(4);
     dll.addToHead(3);
-    expect(dll.head.next.next).to.eql(tail);
-  })
+    dll.addToHead(2);
+    // expect(dll.)
+  });
+
+
 });
 
 
