@@ -95,7 +95,6 @@ describe('doublyLinkedList', function() {
     expect(dll.contains(1)).to.equal(true);
     expect(dll.contains(2)).to.equal(true);
 
-
   });
 
   it('should return false if does not contains value', function () {
@@ -111,6 +110,25 @@ describe('doublyLinkedList', function() {
     expect(!dll.contains(2)).to.equal(false);
 
   });
+
+  it('should verify size changes when things are aded or removed', function () {
+    dll.addToHead(3);
+    expect(dll.size).to.equal(1);
+    dll.addToTail(4);
+    expect(dll.size).to.equal(2);
+    dll.removeTail();
+    expect(dll.size).to.equal(1);
+    dll.addToHead(2);
+    expect(dll.size).to.equal(2);
+    dll.addToHead(1);
+    expect(dll.size).to.equal(3);
+    dll.removeHead();
+    dll.removeHead();
+    dll.removeHead();
+    expect(dll.size).to.equal(0);
+    dll.removeHead();
+    expect(dll.size).to.equal(0);
+  })
 
 
 });
