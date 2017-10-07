@@ -79,3 +79,10 @@ DoublyLinkedList.prototype.contains = function (value) {
   return false;
 
 };
+
+/*
+addToHead, addToTail - O(1);
+removeNode, removeTail - O(1);
+contains - O(n);
+
+*/

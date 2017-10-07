@@ -74,4 +74,7 @@ bstMethods.depthFirstLog = function (func) {
 };
 /*
  * Complexity: What is the time complexity of the above functions?
+ contains - O(log n)
+ insert - O(log n)
+ depthFirstLog - O(n);
  */
