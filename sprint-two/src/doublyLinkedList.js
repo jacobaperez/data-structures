@@ -23,12 +23,14 @@ DoublyLinkedList.prototype.addToHead = function (value) {
     this.head = this.tail = node;
   } else {
     var current = this.head;
-    current.previous = this.head;
     this.head = node;
-    this.head.next = current;
     if ( current.size === 2 ) {
       current.tail.previous = this.head;
+    } else {
+      current.previous = this.head;
+      this.head.next = current;
     }
+    // currently broken.
   }
 
 };
@@ -38,8 +40,8 @@ DoublyLinkedList.prototype.removeTail = function () {
 
 };
 
-// var dll = new DoublyLinkedList();
-//
-// dll.addToHead(3);
-// dll.addToHead(2);
-// dll.addToHead(1);
+var dll = new DoublyLinkedList();
+
+dll.addToHead(3);
+dll.addToHead(2);
+dll.addToHead(1);
