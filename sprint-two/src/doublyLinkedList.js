@@ -36,9 +36,8 @@ DoublyLinkedList.prototype.addToTail = function (value) {
 };
 
 DoublyLinkedList.prototype.removeTail = function () {
-  this.size--;
-
-  if ( this.tail !== null ) {
+  if ( this.size >= 1 ) {
+    this.size--;
     var currentTail = this.tail;
     let temp = currentTail.value;
     delete this.tail;
@@ -50,9 +49,8 @@ DoublyLinkedList.prototype.removeTail = function () {
 };
 
 DoublyLinkedList.prototype.removeHead = function () {
-  this.size--;
-
-  if ( this.head !== null ) {
+  if ( this.size >= 1 ) {
+    this.size--;
     var currentHead = this.head;
     let temp = currentHead.value;
     delete this.head;
@@ -65,7 +63,6 @@ DoublyLinkedList.prototype.contains = function (value) {
 
   if ( this.size >= 1 ) {
     var current = this.head;
-
     var inner = function(value) {
       if ( current.value === value ) {
         return true;
@@ -75,7 +72,6 @@ DoublyLinkedList.prototype.contains = function (value) {
         return inner(value);
       }
       return false;
-
     }
     return inner(value);
   }
@@ -83,9 +79,3 @@ DoublyLinkedList.prototype.contains = function (value) {
   return false;
 
 };
-
-var dll = new DoublyLinkedList();
-
-dll.addToHead(3);
-dll.addToHead(2);
-dll.addToHead(1);
